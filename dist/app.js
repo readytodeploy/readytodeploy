@@ -7,3 +7,15 @@ dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog
 document.querySelector('.dialog-route').addEventListener('click',()=>{dialog.close();document.querySelector('#ruta').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});document.querySelector('#goal').focus({preventScroll:true});});
 document.querySelector('#route-form').addEventListener('submit',event=>{event.preventDefault();const key=document.querySelector('#goal').value;document.querySelector('#route-result').textContent=`Tu ruta sugerida: ${programs[key].title}. ${key==='producto'?'Empieza reforzando programación, Git y fundamentos web.':key==='cloud'?'Empieza por Git, terminal, redes y servicios web.':'Empieza identificando un proceso repetitivo y definiendo cómo medir su mejora.'} Programa en diseño; todavía no hay inscripciones.`;});
 document.querySelector('#year').textContent=new Date().getFullYear();
+
+const paletteSelect=document.querySelector('#palette');
+const paletteNames={energia:'Energía y precisión',tecnologia:'Tecnología global',premium:'Academia premium'};
+paletteSelect.value=document.documentElement.dataset.palette||'energia';
+paletteSelect.addEventListener('change',()=>{
+  const value=paletteSelect.value;
+  if(!Object.hasOwn(paletteNames,value))return;
+  document.documentElement.dataset.palette=value;
+  let saved=false;
+  try{localStorage.setItem('rtd-palette',value);saved=true;}catch{}
+  document.querySelector('#palette-status').textContent=`${paletteNames[value]} aplicada${saved?' · Guardada en este navegador':''}`;
+});
