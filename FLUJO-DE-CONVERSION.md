@@ -39,7 +39,7 @@ Medir vistas de oferta, inicio de checkout, pagos confirmados y primer acceso al
 Propuesta de flujo; no hay pagos, suscripciones ni registro de alumnos activados. Espera las decisiones comerciales y la configuración real de Stripe antes de publicar una oferta comprable.
 
 ## Condiciones confirmadas por el fundador
-- Curso individual de una hora: US$10, pago único. Plazo de acceso pendiente de definir.
+- Curso individual de una hora: US$10, pago único. Acceso durante 12 meses, confirmado por el fundador.
 - Suscripción mensual: US$25 cada mes, renovación automática, cancelable en cualquier momento y sin permanencia anual. No es un plan anual.
 - Pase de un mes: US$50, pago único; termina al completar el mes y no se renueva.
 - Definir catálogo incluido y condiciones de cancelación/acceso restantes antes de vender. Ninguna opción está conectada todavía a Stripe.

@@ -1,0 +1,47 @@
+{
+  "account": "Codevargas",
+  "stripe_context": "acct_1OwoK7Hi6DCDgXcf",
+  "livemode": false,
+  "offers": [
+    {
+      "key": "course",
+      "product_id": "prod_VZHnPKMZKHcQ7T",
+      "price_id": "price_1UY9EFHi6DCDgXcfwQ2466H4",
+      "amount": 1000,
+      "currency": "usd",
+      "recurring": null,
+      "access_months": 12,
+      "payment_link_id": "plink_1UY9EjHi6DCDgXcftWGQfI0l",
+      "payment_link_url": "https://buy.stripe.com/test_bJebJ17dXgEAal9dHue3e00"
+    },
+    {
+      "key": "subscription",
+      "product_id": "prod_VZHoavNqmKpIa7",
+      "price_id": "price_1UY9ERHi6DCDgXcfad9nEcBq",
+      "amount": 2500,
+      "currency": "usd",
+      "recurring": {
+        "interval": "month",
+        "interval_count": 1
+      },
+      "access_months": null,
+      "payment_link_id": "plink_1UY9EsHi6DCDgXcfLtI8D5Ew",
+      "payment_link_url": "https://buy.stripe.com/test_6oU14ngOx9c80Kz8nae3e01"
+    },
+    {
+      "key": "month_pass",
+      "product_id": "prod_VZHogspQDsBmtM",
+      "price_id": "price_1UY9EUHi6DCDgXcfHCfUywPq",
+      "amount": 5000,
+      "currency": "usd",
+      "recurring": null,
+      "access_months": 1,
+      "payment_link_id": "plink_1UY9EyHi6DCDgXcfLttcKrZL",
+      "payment_link_url": "https://buy.stripe.com/test_00w7sL55PagcfFtgTGe3e02"
+    }
+  ],
+  "portal_configuration_id": "bpc_1UY9FGHi6DCDgXcfA3Ta9PKA",
+  "portal_url": "https://billing.stripe.com/p/login/test_bJebJ17dXgEAal9dHue3e00",
+  "fulfillment_configured": false,
+  "automatic_tax_enabled": false
+}
