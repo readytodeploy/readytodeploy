@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00.000 --> 00:05.000
+Tu primer deploy. Publica una página estática y comprueba que funciona.
+
+00:05.000 --> 00:10.000
+Encuentra index.html y sus recursos.
+
+00:10.000 --> 00:15.000
+Configura la carpeta de salida en tu plataforma.
+
+00:15.000 --> 00:20.000
+Abre la URL pública y comprueba la portada y los recursos.

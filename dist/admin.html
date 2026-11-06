@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Administración de prueba · Ready to Deploy Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="campus.css?v=2">
+  <script type="module" src="admin.js"></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="./">READY TO DEPLOY ACADEMY</a><a class="header-link" href="./#cursos">Volver al catálogo</a></header>
+  <main class="shell">
+    <section class="intro-block">
+      <p class="kicker">ESPACIO DE PRUEBA</p>
+      <h1>Administración</h1>
+      <p>Prueba cómo preparar contenidos y revisar el estado de cursos, estudiantes y suscripciones. Los cambios se guardan en este navegador.</p>
+      <p class="notice">Usa contenido y alias ficticios. Este panel de prueba no publica cursos ni modifica cuentas o cobros reales.</p>
+      <p class="admin-status" id="admin-status" role="status"></p>
+    </section>
+    <div class="admin-layout">
+      <section class="admin-box">
+        <h2>Contenido</h2>
+        <form class="admin-form" id="course-form">
+          <input type="hidden" name="id">
+          <label>Título del curso <input name="title" required maxlength="90"></label>
+          <label>Descripción <textarea name="description" required maxlength="500" rows="3"></textarea></label>
+          <label>Precio en USD <input name="price" type="number" step=".01" min="0" max="10000" value="10" required></label>
+          <label>URL HTTPS del video de prueba <input name="video" type="url" maxlength="400" placeholder="https://…/clase.mp4"></label>
+          <button class="action" type="submit">Guardar borrador</button>
+        </form>
+        <ul class="admin-list" id="content-list"></ul>
+      </section>
+      <section class="admin-box">
+        <h2>Moderación de cursos</h2>
+        <p>Revisa los borradores y aprueba o devuelve los cursos con observaciones.</p>
+        <ul class="admin-list" id="moderation-list"></ul>
+      </section>
+      <section class="admin-box">
+        <h2>Estudiantes de prueba</h2>
+        <form class="admin-form" id="student-form">
+          <label>Alias ficticio <input name="alias" required maxlength="48" placeholder="Ej. Alumno de prueba 01"></label>
+          <button class="action" type="submit">Crear estudiante de prueba</button>
+        </form>
+        <ul class="admin-list" id="student-list"></ul>
+      </section>
+      <section class="admin-box">
+        <h2>Suscripciones de prueba</h2>
+        <form class="admin-form" id="subscription-form">
+          <label>Estudiante <select name="student" required></select></label>
+          <button class="action" type="submit">Simular suscripción mensual</button>
+        </form>
+        <ul class="admin-list" id="subscription-list"></ul>
+        <p class="small"><a class="text-button" href="https://billing.stripe.com/p/login/test_bJebJ17dXgEAal9dHue3e00">Abrir portal de Stripe en pruebas ↗</a></p>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer shell">Ready to Deploy Academy</footer>
+  <dialog id="admin-player" aria-labelledby="admin-player-title">
+    <form method="dialog" class="dialog-close"><button aria-label="Cerrar reproductor">×</button></form>
+    <h2 id="admin-player-title">Vista previa del curso</h2>
+    <video controls playsinline preload="metadata" width="100%"></video>
+    <p class="notice" role="status" hidden>No se pudo cargar el video. Comprueba la URL y que sea un archivo reproducible.</p>
+  </dialog>
+</body>
+</html>
