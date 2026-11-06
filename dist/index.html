@@ -1,26 +1,62 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-palette="premium">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Cursos prácticos de tecnología en una hora. Explora una clase de muestra y prueba el proceso de compra.">
   <title>Ready to Deploy Academy · Cursos prácticos de tecnología</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="campus.css?v=2">
+  <link rel="stylesheet" href="campus.css?v=3">
   <script src="campus.js" type="module"></script>
 </head>
-<body>
+<body class="storefront">
   <header class="site-header">
     <a class="brand" href="./"><span class="brand-icon" aria-hidden="true">↗</span><span>READY TO DEPLOY<small>ACADEMY</small></span></a>
-    <a class="header-link" href="#muestra">Ver clase</a>
+    <span class="preview-badge"><span>Preview Build · </span>Entorno de pruebas</span>
   </header>
   <main class="shell">
     <section class="intro-block" id="inicio">
       <p class="kicker">ACADEMIA DE TECNOLOGÍA</p>
-      <h1>Aprende en una hora.<br><em>Entrega algo real.</em></h1>
-      <p>Construye y despliega soluciones con ejercicios que puedes aplicar a tus propios proyectos.</p>
-      <a class="action" href="#cursos">Explorar cursos <span aria-hidden="true">↓</span></a>
+      <h1>Aprende en 60 minutos.<br><em>Despliega hoy.</em></h1>
+      <p>Tecnología aplicada, sin rodeos.</p>
+      <a class="action" href="#muestra">Ver la demostración <span aria-hidden="true">↓</span></a>
     </section>
+    <section class="section-block lesson" id="muestra" aria-labelledby="lesson-title">
+      <div class="block-heading">
+        <div><p class="kicker">CLASE DE MUESTRA</p><h2 id="lesson-title">De cero a producción en 20 segundos</h2></div>
+      </div>
+      <p class="section-lede">Mira cómo una página estática se convierte en un sitio público que puedes verificar y compartir.</p>
+      <div class="video-frame">
+      <video id="preview-player" playsinline preload="metadata" poster="assets/primer-deploy.svg" aria-label="Vista previa de Tu primer deploy">
+        <source src="assets/primer-deploy.mp4" type="video/mp4">
+        <track src="assets/primer-deploy.vtt" kind="captions" srclang="es" label="Español">
+      </video>
+      <button class="video-play" type="button" aria-label="Reproducir la demostración" aria-controls="preview-player"><span aria-hidden="true">▶</span></button>
+      </div>
+      <p id="lesson-status" class="notice" role="status" hidden></p>
+      <div class="lesson-actions">
+        <a class="action" href="#cursos">Explorar cursos <span aria-hidden="true">↓</span></a>
+        <details class="transcript"><summary>Leer la clase</summary>
+          <p>Localiza el archivo index.html y sus recursos, configura la carpeta de salida en el servicio de alojamiento y abre la URL pública para comprobar la portada, los estilos y los enlaces.</p>
+        </details>
+      </div>
+    </section>
+    <details class="checklist" id="descargas">
+      <summary><span><span class="kicker">RECURSO GRATUITO</span><strong>Checklist de despliegue</strong></span><span id="checklist-count">0 de 6</span></summary>
+      <div class="checklist-body">
+        <progress id="checklist-progress" max="6" value="0" aria-label="Progreso de la checklist"></progress>
+        <div id="checklist-items">
+          <label><input type="checkbox" value="1"><span><strong>Archivos listos</strong><small>Localiza index.html, los estilos, los scripts y los recursos.</small></span></label>
+          <label><input type="checkbox" value="2"><span><strong>Salida configurada</strong><small>Selecciona la carpeta que contiene el sitio en tu servicio de alojamiento.</small></span></label>
+          <label><input type="checkbox" value="3"><span><strong>Versión confirmada</strong><small>Verifica que el commit incluya todos los archivos del despliegue.</small></span></label>
+          <label><input type="checkbox" value="4"><span><strong>URL pública abierta</strong><small>Comprueba la portada en una ventana privada y en un celular.</small></span></label>
+          <label><input type="checkbox" value="5"><span><strong>Recursos comprobados</strong><small>Prueba estilos, botones y descargas en la URL pública.</small></span></label>
+          <label><input type="checkbox" value="6"><span><strong>Entrega documentada</strong><small>Guarda la URL y el commit para poder repetir el despliegue.</small></span></label>
+        </div>
+        <p class="small" id="checklist-status" role="status">Tu progreso se guarda en este navegador.</p>
+        <a class="text-button" href="assets/checklist-deploy.md" download>Descargar versión de texto ↓</a>
+      </div>
+    </details>
     <section class="section-block" id="cursos" aria-labelledby="course-heading">
       <div class="block-heading">
         <div><p class="kicker">CLASES PRÁCTICAS</p><h2 id="course-heading">Elige tu curso</h2></div>
@@ -30,44 +66,14 @@
         </div>
       </div>
       <div class="course-rail" id="course-rail" tabindex="0" aria-label="Catálogo de cursos"></div>
-      <p class="small">Compra de prueba. Introduce un correo ficticio en Stripe para recorrer el pago.</p>
-    </section>
-    <section class="section-block lesson" id="muestra" aria-labelledby="lesson-title">
-      <div class="block-heading">
-        <div><p class="kicker">CLASE DE MUESTRA · 20 SEGUNDOS</p><h2 id="lesson-title">Tu primer deploy</h2></div>
-      </div>
-      <video id="preview-player" controls playsinline preload="metadata" poster="assets/primer-deploy.svg" aria-label="Vista previa de Tu primer deploy">
-        <source src="assets/primer-deploy.mp4" type="video/mp4">
-        <track src="assets/primer-deploy.vtt" kind="captions" srclang="es" label="Español">
-      </video>
-      <p id="lesson-status" class="notice" role="status" hidden></p>
-      <div class="lesson-actions">
-        <a class="action" href="#descargas">Ir a descargas <span aria-hidden="true">↓</span></a>
-        <details class="transcript"><summary>Leer la clase</summary>
-          <p>Localiza el archivo index.html y sus recursos, configura la carpeta de salida en el servicio de alojamiento y abre la URL pública para comprobar la portada, los estilos y los enlaces.</p>
-        </details>
-      </div>
-    </section>
-    <section class="section-block download-panel" id="descargas">
-      <div><p class="kicker">RECURSO GRATUITO</p><h2>Checklist de despliegue</h2><p>Úsala antes de compartir el enlace de tu primer proyecto.</p></div>
-      <a class="action" href="assets/checklist-deploy.md" download>Descargar checklist <span aria-hidden="true">↓</span></a>
     </section>
     <section class="section-block" id="precios">
       <div class="block-heading"><div><p class="kicker">OTRAS FORMAS DE ACCESO</p><h2>Elige cómo aprender</h2></div></div>
       <div class="plan-grid" id="plan-grid"></div>
-      <p class="small">Las compras son de prueba. Usa datos ficticios. El catálogo de los planes se confirmará antes del lanzamiento.</p>
-      <a class="text-button" id="billing-link" href="https://billing.stripe.com/p/login/test_bJebJ17dXgEAal9dHue3e00">Gestionar suscripción de prueba ↗</a>
+      <p class="small">El catálogo incluido en los planes se confirmará antes del lanzamiento.</p>
     </section>
   </main>
-  <footer class="site-footer shell">
-    <a href="admin.html">Panel de administración · Demo</a>
-    <label for="palette">Paleta</label>
-    <select id="palette">
-      <option value="energia">Energía y precisión</option>
-      <option value="tecnologia">Tecnología global</option>
-      <option value="premium">Academia premium</option>
-    </select>
-  </footer>
+  <footer class="site-footer shell">Ready to Deploy Academy</footer>
   <template id="course-card">
     <article class="catalog-card">
       <div class="cover"><span class="course-category"></span><span class="cover-mark" aria-hidden="true">↗</span></div>

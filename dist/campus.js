@@ -20,15 +20,11 @@ for (const course of courses) {
   card.querySelector('.card-description').textContent = course.description;
   card.querySelector('.card-price').textContent = course.available ? 'US$10' : 'US$10 · Precio previsto';
   if (course.available) {
-    const preview = document.createElement('a');
-    preview.href = '#muestra';
-    preview.className = 'action secondary';
-    preview.textContent = 'Ver muestra';
     const buy = document.createElement('a');
     buy.href = stripe.course;
     buy.className = 'action';
-    buy.textContent = 'Probar compra';
-    card.querySelector('.card-actions').append(preview, buy);
+    buy.textContent = 'Probar compra en Stripe';
+    card.querySelector('.card-actions').append(buy);
   }
   rail.append(card);
 }
@@ -70,26 +66,53 @@ for (const [title, description, url] of plans) {
 }
 
 const video = document.querySelector('#preview-player');
+const play = document.querySelector('.video-play');
 const videoStatus = document.querySelector('#lesson-status');
-video.addEventListener('ended', () => {
-  videoStatus.textContent = 'Ya puedes descargar la checklist para aplicar la clase.';
+function showVideoStatus(message) {
+  videoStatus.textContent = message;
   videoStatus.hidden = false;
+}
+
+play.addEventListener('click', async () => {
+  try {
+    await video.play();
+    video.controls = true;
+    play.hidden = true;
+    video.focus({preventScroll: true});
+  } catch {
+    showVideoStatus('El video no se pudo reproducir. Puedes leer la clase debajo.');
+  }
 });
 video.querySelector('source').addEventListener('error', () => {
-  videoStatus.textContent = 'El video no se pudo cargar. Puedes leer la clase y descargar la checklist.';
-  videoStatus.hidden = false;
+  showVideoStatus('El video no se pudo cargar. Puedes leer la clase debajo.');
 });
 
-const palette = document.querySelector('#palette');
-const choices = [...palette.options].map(option => option.value);
+const checklist = document.querySelector('#descargas');
+const items = [...checklist.querySelectorAll('input[type="checkbox"]')];
+const storageKey = 'rtd-deploy-checklist-v1';
+const checklistStatus = document.querySelector('#checklist-status');
 try {
-  const saved = localStorage.getItem('rtd-palette');
-  if (choices.includes(saved)) palette.value = saved;
-} catch {
-  // The current selection still works when the browser blocks storage.
+  const saved = JSON.parse(localStorage.getItem(storageKey));
+  if (Array.isArray(saved)) {
+    for (const item of items) item.checked = saved.includes(item.value);
+  }
+} catch {}
+
+function updateChecklist() {
+  const completed = items.filter(item => item.checked).length;
+  document.querySelector('#checklist-count').textContent = completed + ' de ' + items.length;
+  document.querySelector('#checklist-progress').value = completed;
 }
-document.documentElement.dataset.palette = palette.value;
-palette.addEventListener('change', () => {
-  document.documentElement.dataset.palette = palette.value;
-  try { localStorage.setItem('rtd-palette', palette.value); } catch {}
+checklist.addEventListener('change', () => {
+  updateChecklist();
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(items.filter(item => item.checked).map(item => item.value)));
+  } catch {
+    checklistStatus.textContent = 'El progreso está disponible hasta que cierres esta página.';
+  }
 });
+if (location.hash === '#descargas') checklist.open = true;
+window.addEventListener('hashchange', () => {
+  if (location.hash === '#descargas') checklist.open = true;
+});
+updateChecklist();
